@@ -1,0 +1,21 @@
+{
+    "name": "AutoDocSS Dev Environment",
+    "build": {
+      "dockerfile": "Dockerfile"
+    },
+    "customizations": {
+      "vscode": {
+        "settings": {
+          "terminal.integrated.defaultProfile.linux": "bash"
+        },
+        "extensions": [
+          "ms-python.python",
+          "ms-python.vscode-pylance"
+        ]
+      }
+    },
+    "postCreateCommand": "pip install -r requirements.txt",
+    "forwardPorts": [],
+    "remoteUser": "vscode"
+  }
+  
