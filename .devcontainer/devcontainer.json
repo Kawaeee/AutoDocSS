@@ -1,0 +1,24 @@
+{
+  "name": "AutoDocSS - Codespace",
+  "build": {
+    "dockerfile": "Dockerfile"
+  },
+  "customizations": {
+    "vscode": {
+      "settings": {
+        "terminal.integrated.defaultProfile.linux": "bash",
+        // Git Settings
+        "git.openRepositoryInParentFolders": "always",
+        "git.autofetch": true,
+        "git.confirmNoVerifyCommit": false,
+        "git.confirmSync": false,
+        "git.ignoreMissingGitWarning": true
+      },
+      "extensions": [
+        "ms-python.python",
+        "seatonjiang.gitmoji-vscode"
+      ]
+    } 
+  },
+  "postCreateCommand": "pip install -r requirements.txt"
+}
