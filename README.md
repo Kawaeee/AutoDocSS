@@ -18,5 +18,6 @@ pip install -r requirements.txt
 
 #### Run the script with the following command:
 ```bash
-python main.py "https://docs.google.com/presentation/..." --output-folder "output/slides"
+python main.py "https://docs.google.com/presentation/..."
+
 ```

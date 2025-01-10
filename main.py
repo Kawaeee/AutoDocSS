@@ -29,14 +29,18 @@ def capture_google_slides(url, output_folder, headless=True):
     driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()), options=options)
 
     try:
-        # Create the output folder if it doesn't exist
-        os.makedirs(output_folder, exist_ok=True)
-
         # Open the Google Slides presentation
         driver.get(url)
 
         # Allow time for the page to load fully
         time.sleep(20)
+
+        # Find slide name
+        filename = driver.find_element(By.CLASS_NAME, "docs-title-input-label").text
+        print(f"Google Slide file name: {filename}")
+
+        # Create the output folder if it doesn't exist
+        os.makedirs(os.path.join(output_folder, filename), exist_ok=True)
 
         # Pre locate all slide thumbnails in the filmstrip first
         slides = driver.find_elements(By.CLASS_NAME, "punch-filmstrip-thumbnail")
@@ -70,7 +74,7 @@ def capture_google_slides(url, output_folder, headless=True):
             screenshot = canvas_container.screenshot_as_png
 
             # Save the image
-            image_path = os.path.join(output_folder, f"slide_{i + 1}.png")
+            image_path = os.path.join(output_folder, filename, f"slide_{i + 1}.png")
             with open(image_path, "wb") as f:
                 f.write(screenshot)
             print(f"Captured slide {i + 1}")
